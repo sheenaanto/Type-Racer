@@ -58,6 +58,48 @@
           min-height: 88px;
         }
       }
+      /* Main grid for test area and results */
+      .main {
+        max-width: 1200px;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+      }
+      /* Make input groups inside the left column fill available width
+         and keep label and select on the same line */
+      .main-left .input-group {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: nowrap; /* prevent label and select from wrapping */
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .main-left .input-group .input-group-text {
+        white-space: nowrap; /* keep the label on one line */
+        flex: 0 0 auto;
+      }
+      .main-left .input-group .form-select {
+        flex: 1 1 auto; /* let the select fill remaining width */
+        min-width: 0; /* allow shrinking in flexbox */
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .main-left,
+      .main-right {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      }
+      @media (min-width: 768px) {
+        .grid {
+          grid-template-columns: 2fr 1fr; /* left:two-thirds, right:one-third */
+          align-items: start;
+        }
+      }
     </style>
   </head>
   <body>
@@ -69,6 +111,44 @@
         </button>
       </div>
     </header>
+    <main class="main" id="main">
+      <div class="grid">
+        <section class="main-left" id="testArea" aria-labelledby="test-heading">
+          <h2 id="test-heading">Typing Test</h2>
+          <!-- Difficulty selector (Bootstrap input-group) -->
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="difficultySelect"
+              >Select Difficulty</label
+            >
+            <select
+              class="form-select"
+              id="difficultySelect"
+              aria-label="Select difficulty"
+            >
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <!-- Placeholder: test UI (paragraph, input, controls) will go here -->
+          <p class="muted">
+            Test area placeholder — paragraph and input will be implemented
+            here.
+          </p>
+        </section>
+        <aside
+          class="main-right"
+          id="resultsArea"
+          aria-labelledby="results-heading"
+        >
+          <h2 id="results-heading">Results</h2>
+          <!-- Placeholder: results, WPM, accuracy, history -->
+          <p class="muted">
+            Results placeholder — WPM, accuracy and history will appear here.
+          </p>
+        </aside>
+      </div>
+    </main>
     <!-- Js for the bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist /js/bootstrap.min.js"></script>
     <!-- fontawesome -->
