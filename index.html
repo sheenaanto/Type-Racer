@@ -97,7 +97,7 @@
       /* Typing area styles */
       .sample-text {
         background: #f8fafc;
-        border-left: 4px solid rgba(0,0,0,0.06);
+        border-left: 4px solid rgba(0, 0, 0, 0.06);
         padding: 0.75rem;
         border-radius: 6px;
         margin-bottom: 0.75rem;
@@ -134,7 +134,7 @@
         color: #000;
         border-color: #e65f00;
         outline: none;
-        box-shadow: 0 0 0 3px rgba(255,133,0,0.12);
+        box-shadow: 0 0 0 3px rgba(255, 133, 0, 0.12);
       }
       @media (min-width: 768px) {
         .grid {
@@ -181,15 +181,25 @@
 
           <!-- Typing input area -->
           <div class="typing-input">
-            <label for="typingInput" class="visually-hidden">Type the text</label>
-            <textarea id="typingInput" spellcheck="false" inputmode="text" placeholder="Start typing here..." aria-label="Typing input"></textarea>
+            <label for="typingInput" class="visually-hidden"
+              >Type the text</label
+            >
+            <textarea
+              id="typingInput"
+              spellcheck="false"
+              inputmode="text"
+              placeholder="Start typing here..."
+              aria-label="Typing input"
+            ></textarea>
           </div>
 
           <!-- Start / Stop / Retry controls -->
           <div class="controls" role="group" aria-label="Test controls">
             <button id="startBtn" class="btn btn-primary">Start</button>
             <button id="stopBtn" class="btn btn-secondary">Stop</button>
-            <button id="retryBtn" class="btn btn-outline-secondary">Retry</button>
+            <button id="retryBtn" class="btn btn-outline-secondary">
+              Retry
+            </button>
           </div>
         </section>
         <aside
