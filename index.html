@@ -94,6 +94,48 @@
         padding: 1rem;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
       }
+      /* Typing area styles */
+      .sample-text {
+        background: #f8fafc;
+        border-left: 4px solid rgba(0,0,0,0.06);
+        padding: 0.75rem;
+        border-radius: 6px;
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+      }
+      .typing-input textarea {
+        width: 100%;
+        min-height: 120px;
+        padding: 0.6rem;
+        font-size: 1rem;
+        border: 1px solid #e6e6e6;
+        border-radius: 6px;
+        resize: vertical;
+      }
+      .controls {
+        display: flex;
+        gap: 0.6rem;
+        margin-top: 0.75rem;
+        justify-content: center; /* center buttons under the textarea */
+        width: 100%;
+        align-items: center;
+      }
+      .controls .btn {
+        padding: 0.5rem 0.9rem;
+        border-radius: 6px;
+        cursor: pointer;
+        background: #fff;
+        color: #000; /* button text color black */
+        border: 2px solid #ff8500;
+      }
+      .controls .btn:hover,
+      .controls .btn:focus {
+        background: #fff;
+        color: #000;
+        border-color: #e65f00;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(255,133,0,0.12);
+      }
       @media (min-width: 768px) {
         .grid {
           grid-template-columns: 2fr 1fr; /* left:two-thirds, right:one-third */
@@ -130,11 +172,25 @@
               <option value="hard">Hard</option>
             </select>
           </div>
-          <!-- Placeholder: test UI (paragraph, input, controls) will go here -->
-          <p class="muted">
-            Test area placeholder — paragraph and input will be implemented
-            here.
-          </p>
+          <!-- Sample paragraph for the test -->
+          <div class="sample-text" id="sampleText">
+            The quick brown fox jumps over the lazy dog. Practice typing
+            regularly to improve speed and accuracy. Focus on consistency and
+            correct finger placement.
+          </div>
+
+          <!-- Typing input area -->
+          <div class="typing-input">
+            <label for="typingInput" class="visually-hidden">Type the text</label>
+            <textarea id="typingInput" spellcheck="false" inputmode="text" placeholder="Start typing here..." aria-label="Typing input"></textarea>
+          </div>
+
+          <!-- Start / Stop / Retry controls -->
+          <div class="controls" role="group" aria-label="Test controls">
+            <button id="startBtn" class="btn btn-primary">Start</button>
+            <button id="stopBtn" class="btn btn-secondary">Stop</button>
+            <button id="retryBtn" class="btn btn-outline-secondary">Retry</button>
+          </div>
         </section>
         <aside
           class="main-right"
