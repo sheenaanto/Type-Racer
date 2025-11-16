@@ -54,6 +54,7 @@ function startTimer() {
 }
 
 function stopTimer() {
+  // The subtraction gives elapsed milliseconds; dividing by 1000 converts to seconds.
   const seconds = (performance.now() - startTime) / 1000
   const chars = document.getElementById("typingInput").value.length
   const wpm = (chars / 5) / (seconds / 60)
