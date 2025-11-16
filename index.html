@@ -7,7 +7,7 @@
 
     <!-- Link to the bootstrap -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0 /dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -16,9 +16,92 @@
     <header class="site-header" role="banner">
       <div class="container">
         <h1 class="logo">TypeRacer</h1>
-        <button id="instructionsBtn" aria-label="Show instructions">
+        <button
+          id="instructionsBtn"
+          class="btn btn-info"
+          data-bs-toggle="modal"
+          data-bs-target="#instructionsModal"
+          aria-label="Show instructions"
+        >
           Instructions
         </button>
+
+        <!-- Instructions Modal -->
+        <div
+          class="modal fade"
+          id="instructionsModal"
+          tabindex="-1"
+          aria-labelledby="instructionsModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="instructionsModalLabel">
+                  How to take the TypeRacer test
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <p>Follow these steps to complete the typing test:</p>
+                <ol>
+                  <li>
+                    <strong>Select difficulty:</strong> Choose Easy, Medium, or
+                    Hard to adjust paragraph length and complexity.
+                  </li>
+                  <li>
+                    <strong>Start the test:</strong> Click <em>Start</em>. The
+                    timer will begin when you start typing (or immediately if
+                    your implementation starts on click).
+                  </li>
+                  <li>
+                    <strong>Type the text:</strong> Type exactly what is shown
+                    in the sample paragraph. Pay attention to punctuation,
+                    spacing and capitalization. Use Backspace to correct
+                    mistakes. Spellcheck is disabled to avoid interference.
+                  </li>
+                  <li>
+                    <strong>Stop or retry:</strong> Click <em>Stop</em> to end
+                    early. Click <em>Retry</em> to reset the text and timer for
+                    the current difficulty.
+                  </li>
+                  <li>
+                    <strong>View results:</strong> After finishing, check the
+                    Results panel for Level, Time and WPM (words per minute).
+                    WPM is calculated based on correctly typed characters/words
+                    and elapsed time.
+                  </li>
+                </ol>
+                <h6>Tips</h6>
+                <ul>
+                  <li>
+                    Place focus inside the typing box before you begin to ensure
+                    keystrokes are captured.
+                  </li>
+                  <li>Avoid copy/paste for valid scoring.</li>
+                  <li>
+                    Practice with the Easy level to warm up, then increase
+                    difficulty as you improve.
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                >
+                  Got it
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
     <main class="main" id="main">
@@ -101,7 +184,7 @@
       </div>
     </main>
     <!-- Js for the bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist /js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- fontawesome -->
     <script
       src="https://kit.fontawesome.com/YOUR-KIT-CODE-HERE.js"
