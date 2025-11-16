@@ -30,7 +30,9 @@ function loadSample() {
 }
 
 function checkWords() {
+  // splits the text into an array of words (using spaces as separators).
   const typed = document.getElementById("typingInput").value.split(' ')
+  // This selects all <span> elements inside the element with id sampleText.
   const spans = document.querySelectorAll('#sampleText span')
   
   spans.forEach((span, i) => {
