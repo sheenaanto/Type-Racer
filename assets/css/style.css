@@ -141,6 +141,12 @@
         width: 98%;
 
       }
+      .sample-text .correct {
+        color: #0066cc;
+      }
+      .sample-text .incorrect {
+        color: #cc0000;
+      }
       .typing-input textarea {
         width: 98%;
         min-height: 120px;

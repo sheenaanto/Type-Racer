@@ -16,76 +16,72 @@ const texts = {
   ],
 }
 
-function randomItem(arr) {
-  return arr[Math.floor(Math.random() * arr.length)]
+let sampleWords = []
+
+function loadSample() {
+  const level = document.getElementById("difficultySelect").value
+  const list = texts[level]
+  const text = list[Math.floor(Math.random() * list.length)]
+  
+  sampleWords = text.split(' ')
+  const sampleText = document.getElementById("sampleText")
+  sampleText.innerHTML = sampleWords.map(word => `<span>${word}</span>`).join(' ')
+  document.getElementById("resultLevel").textContent = level.charAt(0).toUpperCase() + level.slice(1)
 }
 
-function loadSample(level) {
-  const difficultySelect = document.getElementById("difficultySelect")
-  const sampleText = document.getElementById("sampleText")
-  const resultLevel = document.getElementById("resultLevel")
-  const key = String(level || (difficultySelect ? difficultySelect.value : "easy")).toLowerCase()
-  const list = texts[key] || texts.easy
-  sampleText.textContent = randomItem(list)
-  if (resultLevel) resultLevel.textContent = key.charAt(0).toUpperCase() + key.slice(1)
+function checkWords() {
+  const typed = document.getElementById("typingInput").value.split(' ')
+  const spans = document.querySelectorAll('#sampleText span')
+  
+  spans.forEach((span, i) => {
+    span.className = ''
+    if (typed[i]) {
+      span.className = typed[i] === sampleWords[i] ? 'correct' : 'incorrect'
+    }
+  })
 }
 
 let startTime = 0
-let running = false
 
 function startTimer() {
-  if (running) return
-
+  const input = document.getElementById("typingInput")
   startTime = performance.now()
-  running = true
-  startBtn.disabled = true
-  stopBtn.disabled = false
-  retryBtn.disabled = true
-  typingInput.value = ""
-  typingInput.focus()
+  input.value = ""
+  input.focus()
+  document.getElementById("startBtn").disabled = true
+  document.getElementById("stopBtn").disabled = false
+  document.getElementById("retryBtn").disabled = true
 }
 
 function stopTimer() {
-  if (!running) return
-
-  const elapsed = (performance.now() - startTime) / 1000
-  resultTime.textContent = elapsed.toFixed(2) + "s"
-  // Placeholder simple WPM (optional future refinement)
-  const chars = typingInput.value.length
-  const wpm = elapsed > 0 ? (chars / 5) / (elapsed / 60) : 0
-  resultWPM.textContent = Math.round(wpm)
-  running = false
-  startBtn.disabled = false
-  stopBtn.disabled = true
-  retryBtn.disabled = false
+  const seconds = (performance.now() - startTime) / 1000
+  const chars = document.getElementById("typingInput").value.length
+  const wpm = (chars / 5) / (seconds / 60)
+  
+  document.getElementById("resultTime").textContent = seconds.toFixed(2) + "s"
+  document.getElementById("resultWPM").textContent = Math.round(wpm)
+  document.getElementById("startBtn").disabled = false
+  document.getElementById("stopBtn").disabled = true
+  document.getElementById("retryBtn").disabled = false
 }
 
 function retryTest() {
-
-  running = false
-  resultTime.textContent = "0s"
-  resultWPM.textContent = "0"
-  typingInput.value = ""
-  startBtn.disabled = false
-  stopBtn.disabled = true
-  retryBtn.disabled = true
+  document.getElementById("typingInput").value = ""
+  document.getElementById("resultTime").textContent = "0s"
+  document.getElementById("resultWPM").textContent = "0"
+  document.getElementById("startBtn").disabled = false
+  document.getElementById("stopBtn").disabled = true
+  document.getElementById("retryBtn").disabled = true
   loadSample()
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   loadSample()
-  const difficultySelect = document.getElementById("difficultySelect")
-
-  const typingInput = document.getElementById("typingInput")
-  const startBtn = document.getElementById("startBtn")
-  const stopBtn = document.getElementById("stopBtn")
-  const retryBtn = document.getElementById("retryBtn")
-  const resultTime = document.getElementById("resultTime")
-  const resultWPM = document.getElementById("resultWPM")
-  stopBtn.disabled = true
-  retryBtn.disabled = true
-    difficultySelect.addEventListener("change", function () { loadSample() })
-  startBtn.addEventListener("click", startTimer)
-  stopBtn.addEventListener("click", stopTimer)
-  retryBtn.addEventListener("click", retryTest)
+  document.getElementById("difficultySelect").addEventListener("change", loadSample)
+  document.getElementById("startBtn").addEventListener("click", startTimer)
+  document.getElementById("stopBtn").addEventListener("click", stopTimer)
+  document.getElementById("retryBtn").addEventListener("click", retryTest)
+  document.getElementById("typingInput").addEventListener("input", checkWords)
+  document.getElementById("stopBtn").disabled = true
+  document.getElementById("retryBtn").disabled = true
 })
