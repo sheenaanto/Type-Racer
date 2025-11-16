@@ -1,4 +1,5 @@
 <a id="top"></a>
+
 # TypeRacer
 
 A simple, responsive typing speed test that lets users practice typing passages at different difficulty levels, with live accuracy feedback and results for time and words per minute (WPM).
@@ -76,8 +77,8 @@ If you use a different port, update the URL accordingly.
 [Back to top](#top)
 
 - Live feedback: as you type, each word in the sample text is compared to your input word-by-word
-	- Correct words: blue
-	- Incorrect words: red
+  - Correct words: blue
+  - Incorrect words: red
 - WPM calculation: based on total characters typed, using the standard 5-characters-per-word formula
 - Retry: clears the input, resets results, and loads a new random passage at the current difficulty (avoids immediate repeats when possible)
 
